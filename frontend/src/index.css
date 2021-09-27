@@ -1,0 +1,25 @@
+:root {
+    --main-color: hsl(0, 0%, 6%);
+    --secondary-color: hsl(0, 0%, 92%);
+    --theme-color: hsl(160, 100%, 20%);
+    --invert: 90%;
+    --headings: 'Raleway', sans-serif;
+    --text: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: var(--main-color);
+    color: var(--secondary-color);
+    font-family: var(--text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--headings);
+    color: var(--theme-color);
+    line-height: 1;
+}
