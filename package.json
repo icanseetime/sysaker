@@ -1,0 +1,17 @@
+{
+  "name": "sysaker",
+  "version": "1.0.0",
+  "main": "/backend/server.js",
+  "license": "MIT",
+  "author": "IMRG",
+  "scripts": {
+    "start": "node backend/server.js",
+    "backend-start": "cd backend && yarn dev",
+    "frontend-start": "cd frontend && yarn start",
+    "frontend-test": "cd frontend && yarn test --watchAll --coverage",
+    "full-install": "yarn install && cd backend && yarn install && cd ../frontend && yarn",
+    "build": "cd frontend && npm run build",
+    "heroku-install": "cd backend && npm install && cd ../frontend && npm install",
+    "heroku-postbuild": "npm run heroku-install && npm run build"
+  }
+}
