@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './SideControls.css'
 import { ThemeContext, themes } from '../../../utils/ThemeContext'
 
@@ -18,6 +18,7 @@ import { ReactComponent as MinimizeIcon } from '../../../assets/icons/minimize.s
 
 export default function SideControls({ mode, changeMode }) {
 	const { theme, setTheme } = useContext(ThemeContext)
+	const [fullscreen, setFullscreen] = useState(false)
 
 	return (
 		<nav className="SideControls">
@@ -127,12 +128,35 @@ export default function SideControls({ mode, changeMode }) {
 			{/* Fullscreen mode */}
 			<SideControlButton
 				icon={
-					<ExpandIcon
-						style={{
-							fill: theme.secondary
-						}}
-					/>
+					fullscreen ? (
+						<MinimizeIcon
+							style={{
+								fill: theme.secondary
+							}}
+						/>
+					) : (
+						<ExpandIcon
+							style={{
+								fill: theme.secondary
+							}}
+						/>
+					)
 				}
+				onClick={() => {
+					if (!fullscreen) {
+						document.documentElement.requestFullscreen()
+						setFullscreen(true)
+					} else {
+						if (document.exitFullscreen) document.exitFullscreen()
+						if (document.webkitExitFullscreen)
+							document.webkitExitFullscreen()
+						if (document.msExitFullscreen)
+							document.msExitFullscreen()
+						if (document.mozCancelFullScreen)
+							document.mozCancelFullScreen()
+						setFullscreen(false)
+					}
+				}}
 			/>
 		</nav>
 	)
