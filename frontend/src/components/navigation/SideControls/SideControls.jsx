@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import './SideControls.css'
 import { ThemeContext, themes } from '../../../utils/ThemeContext'
 
@@ -19,6 +19,13 @@ import { ReactComponent as MinimizeIcon } from '../../../assets/icons/minimize.s
 export default function SideControls({ mode, changeMode }) {
 	const { theme, setTheme } = useContext(ThemeContext)
 	const [fullscreen, setFullscreen] = useState(false)
+
+	const keypressFullscreenCancel = (e) => {
+		console.log(e.keyCode)
+		if (fullscreen && e.keyCode === 27) {
+			setFullscreen(false)
+		}
+	}
 
 	return (
 		<nav className="SideControls">
@@ -144,9 +151,23 @@ export default function SideControls({ mode, changeMode }) {
 				}
 				onClick={() => {
 					if (!fullscreen) {
+						// Set event listener to check for 'Esc' fullscreen cancel
+						document.addEventListener(
+							'keydown',
+							keypressFullscreenCancel
+						)
+
+						// Set fullscreen
 						document.documentElement.requestFullscreen()
 						setFullscreen(true)
 					} else {
+						// Remove event listener checking for keystroke
+						document.removeEventListener(
+							'keydown',
+							keypressFullscreenCancel
+						)
+
+						// Cancel fullscreen
 						if (document.exitFullscreen) document.exitFullscreen()
 						if (document.webkitExitFullscreen)
 							document.webkitExitFullscreen()
