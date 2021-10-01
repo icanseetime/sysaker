@@ -95,6 +95,9 @@ export default function SideControls({ mode, changeMode }) {
 						}}
 					/>
 				}
+				onClick={() => {
+					window.print()
+				}}
 			/>
 
 			{/* Change theme [dark/light mode] */}

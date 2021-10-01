@@ -5,3 +5,15 @@
     box-sizing: border-box;
     min-height: 100vh;
 }
+
+@media print {
+
+    /* TODO: fix print issues, no items displaying */
+    :not(.Grid),
+    :not(.App),
+    :not(header) {
+        visibility: hidden;
+        color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+    }
+}
