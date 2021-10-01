@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 // Components
 import ColorHeader from '../colors/ColorHeader/ColorHeader'
+import SideControls from '../navigation/SideControls/SideControls'
 import SizeSelector from '../SizeSelector/SizeSelector'
 
 export default function Editor() {
@@ -9,6 +10,7 @@ export default function Editor() {
 		columns: 20,
 		rows: 20
 	})
+	const [mode, setMode] = useState('pen')
 
 	const handleGridSizeChange = (type, newValue) => {
 		setGridSize((prev) => {
@@ -19,7 +21,7 @@ export default function Editor() {
 	return (
 		<section>
 			<ColorHeader />
-			{/* SideControls */}
+			<SideControls mode={mode} changeMode={setMode} />
 			{/* Grid */}
 			<SizeSelector
 				gridSize={gridSize}

@@ -1,0 +1,7 @@
+.SideControlButton {
+    cursor: pointer;
+}
+
+.SideControlButton svg {
+    width: 40px;
+}
