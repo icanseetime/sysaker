@@ -10,14 +10,17 @@ import Main from './pages/Main/Main'
 import Header from './components/navigation/Header/Header'
 
 function App() {
-	const [theme, setTheme] = useState({
-		theme: themes.dark
-	})
+	const [theme, setTheme] = useState(themes.dark)
 
 	const themeValue = useMemo(() => ({ theme, setTheme }), [theme, setTheme])
 
 	return (
-		<div className="App">
+		<div
+			className="App"
+			style={{
+				backgroundColor: theme.main
+			}}
+		>
 			<ThemeContext.Provider value={themeValue}>
 				<Router>
 					<Header />
