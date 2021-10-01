@@ -1,11 +1,12 @@
 import React from 'react'
+import './SizeSelector.css'
 
 // Components
 import NumberInput from '../inputs/NumberInput/NumberInput'
 
 export default function SizeSelector({ gridSize, changeGridSize }) {
 	return (
-		<div>
+		<div className="SizeSelector">
 			<NumberInput
 				label="Kolonner"
 				name="columns"
