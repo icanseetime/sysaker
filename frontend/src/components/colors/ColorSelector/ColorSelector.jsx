@@ -10,7 +10,10 @@ export default function ColorSelector({ color, changeColor }) {
 				name="color-selector"
 				id="color-selector"
 				value={color}
-				onChange={(e) => changeColor(e.target.value)}
+				// TODO: fix problem where onChange fires before finished picking color
+				onInput={(e) => {
+					changeColor(e.target.value)
+				}}
 			/>
 		</span>
 	)
