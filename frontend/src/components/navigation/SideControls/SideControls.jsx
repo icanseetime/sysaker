@@ -89,7 +89,7 @@ export default function SideControls({ mode, changeMode }) {
 					/>
 				}
 				onClick={() => {
-					// TODO: add function that clears the grid data
+					// TODO: add function that clears the pattern data
 					window.location.reload()
 				}}
 			/>

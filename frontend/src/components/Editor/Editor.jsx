@@ -3,7 +3,7 @@ import './Editor.css'
 
 // Components
 import ColorHeader from '../colors/ColorHeader/ColorHeader'
-import Grid from '../Grid/Grid'
+import Pattern from '../Pattern/Pattern'
 import SideControls from '../navigation/SideControls/SideControls'
 import SizeSelector from '../SizeSelector/SizeSelector'
 
@@ -24,7 +24,7 @@ export default function Editor() {
 		<section className="Editor">
 			<ColorHeader />
 			<SideControls mode={mode} changeMode={setMode} />
-			<Grid size={gridSize} />
+			<Pattern size={gridSize} />
 			<SizeSelector
 				gridSize={gridSize}
 				changeGridSize={handleGridSizeChange}

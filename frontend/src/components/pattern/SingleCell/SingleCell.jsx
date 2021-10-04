@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
-import './GridSquare.css'
-import { ThemeContext } from '../../utils/ThemeContext'
+import './SingleCell.css'
+import { ThemeContext } from '../../../utils/ThemeContext'
 
-export default function GridSquare() {
+export default function SingleCell() {
 	const { theme } = useContext(ThemeContext)
 	return (
 		<span
-			className="GridSquare"
+			className="SingleCell"
 			style={{
 				border: `1px solid ${theme.secondary}`
 			}}

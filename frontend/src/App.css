@@ -9,7 +9,7 @@
 @media print {
 
     /* TODO: fix print issues, no items displaying */
-    :not(.Grid),
+    :not(.Pattern),
     :not(.App),
     :not(header) {
         visibility: hidden;
