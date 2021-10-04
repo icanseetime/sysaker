@@ -1,9 +1,12 @@
 import React, { useContext } from 'react'
 import './ColorSelector.css'
+
+// Utils
 import { ThemeContext } from '../../../utils/ThemeContext'
 
 export default function ColorSelector({ color, changeColor }) {
 	const { theme } = useContext(ThemeContext)
+
 	return (
 		<span className="ColorSelector">
 			<label
@@ -20,7 +23,8 @@ export default function ColorSelector({ color, changeColor }) {
 				id="color-selector"
 				value={color}
 				// TODO: fix problem where onChange fires before finished picking color
-				onInput={(e) => {
+				// Suggested fix: when clicking a cell in the grid, check if color was previously saved - if not, save it!
+				onChange={(e) => {
 					changeColor(e.target.value)
 				}}
 				style={{
