@@ -1,0 +1,5 @@
+.Grid {
+    grid-area: Grid;
+    display: grid;
+    min-height: 80vh;
+}

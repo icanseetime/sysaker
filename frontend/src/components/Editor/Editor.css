@@ -1,0 +1,9 @@
+.Editor {
+    display: grid;
+    grid-template-columns: 1fr 80vh 1fr;
+    grid-template-areas:
+        ". ColorHeader ."
+        "SideControls Grid ."
+        ". SizeSelector ."
+    ;
+}

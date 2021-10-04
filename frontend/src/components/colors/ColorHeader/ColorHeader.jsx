@@ -1,4 +1,5 @@
 import React, { useState, useReducer } from 'react'
+import './ColorHeader.css'
 
 // Components
 import ColorSelector from '../ColorSelector/ColorSelector'

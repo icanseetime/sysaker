@@ -1,0 +1,33 @@
+.SideControlButton {
+    cursor: pointer;
+}
+
+.SideControlButton:hover {
+    animation: shake .8s ease-in-out;
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(0)
+    }
+
+    25% {
+        transform: rotate(.03turn)
+    }
+
+    50% {
+        transform: rotate(-.03turn)
+    }
+
+    75% {
+        transform: rotate(.01turn)
+    }
+
+    100% {
+        transform: rotate(0)
+    }
+}
+
+.SideControlButton svg {
+    width: 40px;
+}
