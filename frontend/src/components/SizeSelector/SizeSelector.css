@@ -1,3 +1,5 @@
 .SizeSelector {
     grid-area: SizeSelector;
+    display: flex;
+    justify-content: space-evenly;
 }

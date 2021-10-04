@@ -1,0 +1,7 @@
+.NumberInput label {
+    margin-right: 10px;
+}
+
+.NumberInput input {
+    width: 50px;
+}

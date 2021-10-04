@@ -1,10 +1,13 @@
 import React, { useContext } from 'react'
+import './NumberInput.css'
+
+// Utils
 import { ThemeContext } from '../../../utils/ThemeContext'
 
 export default function NumberInput({ label, name, value, onChange }) {
 	const { theme } = useContext(ThemeContext)
 	return (
-		<span>
+		<span className="NumberInput">
 			<label
 				htmlFor={name}
 				style={{
