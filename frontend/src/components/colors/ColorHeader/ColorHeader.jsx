@@ -49,7 +49,7 @@ export default function ColorHeader() {
 	}
 
 	return (
-		<div>
+		<div className="ColorHeader">
 			<ColorSelector
 				color={currentColor}
 				changeColor={handleColorChange}
