@@ -2,7 +2,7 @@ import React from 'react'
 import './Pattern.css'
 
 // Components
-import SingleCell from '../pattern/SingleCell/SingleCell'
+import SingleCell from '../SingleCell/SingleCell'
 
 export default function Pattern({ size }) {
 	return (

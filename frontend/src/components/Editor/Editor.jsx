@@ -3,7 +3,7 @@ import './Editor.css'
 
 // Components
 import ColorHeader from '../colors/ColorHeader/ColorHeader'
-import Pattern from '../Pattern/Pattern'
+import Pattern from '../pattern/Pattern/Pattern'
 import SideControls from '../navigation/SideControls/SideControls'
 import SizeSelector from '../SizeSelector/SizeSelector'
 
