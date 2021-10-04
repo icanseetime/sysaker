@@ -12,12 +12,14 @@ export default function SizeSelector({ gridSize, changeGridSize }) {
 				name="columns"
 				value={gridSize.columns}
 				onChange={changeGridSize}
+				max={50}
 			/>
 			<NumberInput
 				label="Rader"
 				name="rows"
 				value={gridSize.rows}
 				onChange={changeGridSize}
+				max={50}
 			/>
 		</div>
 	)

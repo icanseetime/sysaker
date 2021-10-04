@@ -4,7 +4,14 @@ import './NumberInput.css'
 // Utils
 import { ThemeContext } from '../../../utils/ThemeContext'
 
-export default function NumberInput({ label, name, value, onChange }) {
+export default function NumberInput({
+	label,
+	name,
+	value,
+	onChange,
+	min,
+	max
+}) {
 	const { theme } = useContext(ThemeContext)
 	return (
 		<span className="NumberInput">
@@ -21,6 +28,8 @@ export default function NumberInput({ label, name, value, onChange }) {
 				name={name}
 				onChange={(e) => onChange(name, e.target.value)}
 				value={value}
+				min={min || 0}
+				max={max}
 			/>
 		</span>
 	)
