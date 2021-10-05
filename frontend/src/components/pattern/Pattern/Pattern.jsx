@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Pattern.css'
 
 // Components
 import SingleCell from '../SingleCell/SingleCell'
 
 export default function Pattern({ size, mode, color }) {
+	const [pattern, setPattern] = useState(
+		Array(size.columns * size.rows).fill()
+	)
+
+	useEffect(() => {
+		setPattern(Array(size.columns * size.rows).fill())
+	}, [setPattern, size])
+
 	return (
 		<div
 			className="Pattern"
@@ -13,9 +21,9 @@ export default function Pattern({ size, mode, color }) {
 				gridTemplateRows: `repeat(${size.rows}, 1fr)`
 			}}
 		>
-			{Array(size.columns * size.rows).fill(
-				<SingleCell mode={mode} color={color} />
-			)}
+			{pattern.map((_cell, i) => {
+				return <SingleCell mode={mode} color={color} key={i} />
+			})}
 		</div>
 	)
 }
