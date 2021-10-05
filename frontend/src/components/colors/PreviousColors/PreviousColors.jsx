@@ -5,7 +5,7 @@ import { ThemeContext } from '../../../utils/ThemeContext'
 // Components
 import SingleColor from '../SingleColor/SingleColor'
 
-export default function PreviousColors({ previousColors, dispatch }) {
+export default function PreviousColors({ previousColors, changeColor }) {
 	const { theme } = useContext(ThemeContext)
 	return (
 		<div className="PreviousColors">
@@ -21,7 +21,7 @@ export default function PreviousColors({ previousColors, dispatch }) {
 					<SingleColor
 						key={id}
 						color={color}
-						changeColor={dispatch}
+						changeColor={changeColor}
 					/>
 				)
 			})}

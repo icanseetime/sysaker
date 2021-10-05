@@ -53,7 +53,10 @@ export default function ColorHeader({ currentColor, handleColorChange }) {
 	return (
 		<div className="ColorHeader">
 			<ColorSelector color={currentColor} changeColor={changeColor} />
-			<PreviousColors previousColors={prevColors} dispatch={dispatch} />
+			<PreviousColors
+				previousColors={prevColors}
+				changeColor={changeColor}
+			/>
 		</div>
 	)
 }

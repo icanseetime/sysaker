@@ -17,7 +17,11 @@ export default function Editor() {
 
 	const handleColorChange = (color) => {
 		setCurrentColor(color)
-		setMode('pen')
+		if (color !== 'transparent') {
+			setMode('pen')
+		} else {
+			setMode('eraser')
+		}
 	}
 
 	const handleGridSizeChange = (type, newValue) => {
