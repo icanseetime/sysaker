@@ -1,89 +1,77 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './SingleCell.css'
 
 // Utils
 import { ThemeContext } from '../../../utils/ThemeContext'
+import { ACTIONS } from '../../Editor/Editor'
 import {
 	convertHexToRGB,
 	calculateColorBrightness
 } from '../../../utils/colorCalculations'
 
-export default function SingleCell({ mode, color }) {
+export default function SingleCell({ mode, color, cell, dispatch }) {
 	const { theme } = useContext(ThemeContext)
-	const [fill, setFill] = useState({
-		color: 'transparent',
-		pearl: false,
-		pearlColor: theme.secondary
-	})
 
 	useEffect(() => {
-		if (fill.color !== 'transparent') {
-			const rgb = convertHexToRGB(fill.color)
+		if (cell.color !== 'transparent') {
+			const rgb = convertHexToRGB(cell.color)
 			const brightness = calculateColorBrightness(rgb)
 			if (brightness === 'bright') {
-				setFill((prev) => {
-					return { ...prev, pearlColor: 'hsl(0, 0%, 6%)' }
+				dispatch({
+					type: ACTIONS.UPDATE_PEARL_COLOR,
+					payload: { id: cell.id, pearlColor: 'hsl(0, 0%, 6%)' }
 				})
 			} else {
-				setFill((prev) => {
-					return { ...prev, pearlColor: 'hsl(0, 0%, 92%)' }
+				dispatch({
+					type: ACTIONS.UPDATE_PEARL_COLOR,
+					payload: { id: cell.id, pearlColor: 'hsl(0, 0%, 92%)' }
 				})
 			}
 		} else {
-			// Set color to theme secondary
-			setFill((prev) => {
-				return { ...prev, pearlColor: theme.secondary }
+			dispatch({
+				type: ACTIONS.UPDATE_PEARL_COLOR,
+				payload: { id: cell.id, pearlColor: theme.secondary }
 			})
 		}
-	}, [fill.color, theme])
-
-	const handleColorChange = (color) => {
-		setFill((prev) => {
-			return { ...prev, color }
-		})
-	}
-
-	const setPearl = (pearl) => {
-		setFill((prev) => {
-			return { ...prev, pearl }
-		})
-	}
-
-	const handleErase = () => {
-		setFill({
-			color: 'transparent',
-			pearl: false
-		})
-	}
+	}, [cell.color, cell.id, dispatch, theme.secondary])
 
 	return (
 		<span
 			className="SingleCell"
 			style={{
 				border: `1px solid ${theme.secondary}`,
-				backgroundColor: fill.color
+				backgroundColor: cell.color
 			}}
 			onClick={() => {
 				switch (mode) {
 					case 'pen':
-						handleColorChange(color)
+						dispatch({
+							type: ACTIONS.UPDATE_COLOR,
+							payload: { id: cell.id, color: color }
+						})
 						break
 					case 'pearl':
-						setPearl(true)
+						dispatch({
+							type: ACTIONS.TOGGLE_PEARL,
+							payload: { id: cell.id }
+						})
 						break
 					case 'eraser':
-						handleErase()
+						dispatch({
+							type: ACTIONS.CLEAR_CELL,
+							payload: { id: cell.id }
+						})
 						break
 					default:
 						throw Error('No mode selected')
 				}
 			}}
 		>
-			{fill.pearl && (
+			{cell.pearl && (
 				<div
 					className="pearl"
 					style={{
-						borderColor: fill.pearlColor
+						borderColor: cell.pearlColor
 					}}
 				></div>
 			)}

@@ -1,6 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
 import './SideControls.css'
+
+// Utils
 import { ThemeContext, themes } from '../../../utils/ThemeContext'
+import { ACTIONS } from '../../Editor/Editor'
 
 // Components
 import SideControlButton from '../../buttons/SideControlButton/SideControlButton'
@@ -16,7 +19,7 @@ import { ReactComponent as SunIcon } from '../../../assets/icons/sun.svg'
 import { ReactComponent as ExpandIcon } from '../../../assets/icons/expand.svg'
 import { ReactComponent as MinimizeIcon } from '../../../assets/icons/minimize.svg'
 
-export default function SideControls({ mode, changeMode }) {
+export default function SideControls({ mode, changeMode, dispatch }) {
 	const { theme, setTheme } = useContext(ThemeContext)
 	const [fullscreen, setFullscreen] = useState(false)
 
@@ -89,8 +92,9 @@ export default function SideControls({ mode, changeMode }) {
 					/>
 				}
 				onClick={() => {
-					// TODO: add function that clears the pattern data
-					window.location.reload()
+					dispatch({
+						type: ACTIONS.CLEAR_PATTERN
+					})
 				}}
 			/>
 
