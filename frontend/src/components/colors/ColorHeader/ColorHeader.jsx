@@ -13,14 +13,16 @@ export const ACTIONS = {
 const reducer = (prevColors, action) => {
 	switch (action.type) {
 		case ACTIONS.ADD_COLOR:
+			// Check if color already exists in previously used colors
 			if (
-				action.payload.color !== prevColors[0].color &&
 				!prevColors.filter((o) => o.color === action.payload.color)
 					.length > 0
 			) {
+				// Add color to previously used color
 				prevColors = prevColors.slice(0, 9)
 				return [newColor(action.payload.color), ...prevColors]
 			} else {
+				// Return without new color
 				return prevColors
 			}
 		default:
