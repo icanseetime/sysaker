@@ -15,6 +15,11 @@ export default function Editor() {
 	})
 	const [mode, setMode] = useState('pen')
 
+	const handleColorChange = (color) => {
+		setCurrentColor(color)
+		setMode('pen')
+	}
+
 	const handleGridSizeChange = (type, newValue) => {
 		setGridSize((prev) => {
 			return { ...prev, [type]: newValue }
@@ -25,7 +30,7 @@ export default function Editor() {
 		<section className="Editor">
 			<ColorHeader
 				currentColor={currentColor}
-				setCurrentColor={setCurrentColor}
+				handleColorChange={handleColorChange}
 			/>
 			<SideControls mode={mode} changeMode={setMode} />
 			<Pattern size={gridSize} mode={mode} color={currentColor} />

@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react'
+import React, { useReducer } from 'react'
 import './ColorHeader.css'
 
 // Components
@@ -28,7 +28,7 @@ const newColor = (color) => {
 	return { id: Date.now(), color: color }
 }
 
-export default function ColorHeader({ currentColor, setCurrentColor }) {
+export default function ColorHeader({ currentColor, handleColorChange }) {
 	const [prevColors, dispatch] = useReducer(reducer, [
 		{ id: 0, color: 'transparent' },
 		{ id: 1, color: 'transparent' },
@@ -42,20 +42,17 @@ export default function ColorHeader({ currentColor, setCurrentColor }) {
 		{ id: 9, color: 'transparent' }
 	])
 
-	const handleColorChange = (color) => {
+	const changeColor = (color) => {
 		dispatch({
 			type: ACTIONS.ADD_COLOR,
 			payload: { color: color }
 		})
-		setCurrentColor(color)
+		handleColorChange(color)
 	}
 
 	return (
 		<div className="ColorHeader">
-			<ColorSelector
-				color={currentColor}
-				changeColor={handleColorChange}
-			/>
+			<ColorSelector color={currentColor} changeColor={changeColor} />
 			<PreviousColors previousColors={prevColors} dispatch={dispatch} />
 		</div>
 	)
