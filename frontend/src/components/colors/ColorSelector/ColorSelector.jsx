@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './ColorSelector.css'
 
 // Utils
@@ -6,9 +6,15 @@ import { ThemeContext } from '../../../utils/ThemeContext'
 
 export default function ColorSelector({ color, changeColor }) {
 	const { theme } = useContext(ThemeContext)
+	const [newColor, setNewColor] = useState(color)
 
 	return (
-		<span className="ColorSelector">
+		<span
+			className="ColorSelector"
+			onBlur={() => {
+				changeColor(newColor)
+			}}
+		>
 			<label
 				htmlFor="color-selector"
 				style={{
@@ -22,10 +28,8 @@ export default function ColorSelector({ color, changeColor }) {
 				name="color-selector"
 				id="color-selector"
 				value={color}
-				// TODO: fix problem where onChange fires before finished picking color
-				// Suggested fix: when clicking a cell in the grid, check if color was previously saved - if not, save it!
 				onChange={(e) => {
-					changeColor(e.target.value)
+					setNewColor(e.target.value)
 				}}
 				style={{
 					backgroundColor: theme.secondary

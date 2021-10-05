@@ -13,9 +13,13 @@ export const ACTIONS = {
 const reducer = (prevColors, action) => {
 	switch (action.type) {
 		case ACTIONS.ADD_COLOR:
-			prevColors = prevColors.slice(0, 9)
-			console.log(prevColors)
-			return [newColor(action.payload.color), ...prevColors]
+			console.log(action.payload.color, prevColors[0].color)
+			if (action.payload.color !== prevColors[0].color) {
+				prevColors = prevColors.slice(0, 9)
+				return [newColor(action.payload.color), ...prevColors]
+			} else {
+				return prevColors
+			}
 		default:
 			throw new Error()
 	}
