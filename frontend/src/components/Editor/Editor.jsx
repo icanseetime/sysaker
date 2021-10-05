@@ -8,6 +8,7 @@ import SideControls from '../navigation/SideControls/SideControls'
 import SizeSelector from '../SizeSelector/SizeSelector'
 
 export default function Editor() {
+	const [currentColor, setCurrentColor] = useState('#ebebeb')
 	const [gridSize, setGridSize] = useState({
 		columns: 20,
 		rows: 20
@@ -22,9 +23,12 @@ export default function Editor() {
 
 	return (
 		<section className="Editor">
-			<ColorHeader />
+			<ColorHeader
+				currentColor={currentColor}
+				setCurrentColor={setCurrentColor}
+			/>
 			<SideControls mode={mode} changeMode={setMode} />
-			<Pattern size={gridSize} />
+			<Pattern size={gridSize} mode={mode} color={currentColor} />
 			<SizeSelector
 				gridSize={gridSize}
 				changeGridSize={handleGridSizeChange}

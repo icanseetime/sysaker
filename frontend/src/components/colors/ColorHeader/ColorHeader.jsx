@@ -13,7 +13,6 @@ export const ACTIONS = {
 const reducer = (prevColors, action) => {
 	switch (action.type) {
 		case ACTIONS.ADD_COLOR:
-			console.log(action.payload.color, prevColors[0].color)
 			if (action.payload.color !== prevColors[0].color) {
 				prevColors = prevColors.slice(0, 9)
 				return [newColor(action.payload.color), ...prevColors]
@@ -29,8 +28,7 @@ const newColor = (color) => {
 	return { id: Date.now(), color: color }
 }
 
-export default function ColorHeader() {
-	const [currentColor, setCurrentColor] = useState('#ebebeb')
+export default function ColorHeader({ currentColor, setCurrentColor }) {
 	const [prevColors, dispatch] = useReducer(reducer, [
 		{ id: 0, color: 'transparent' },
 		{ id: 1, color: 'transparent' },
