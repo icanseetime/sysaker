@@ -4,6 +4,7 @@
     align-items: center;
     box-sizing: border-box;
     min-height: 100vh;
+    padding: 5px;
 }
 
 @media print {
