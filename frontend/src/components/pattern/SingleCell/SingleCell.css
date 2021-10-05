@@ -1,0 +1,14 @@
+.SingleCell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.SingleCell .pearl {
+    box-sizing: border-box;
+    width: 80%;
+    height: 80%;
+    border: 2px solid white;
+    border-radius: 100%;
+}
