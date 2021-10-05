@@ -13,7 +13,11 @@ export const ACTIONS = {
 const reducer = (prevColors, action) => {
 	switch (action.type) {
 		case ACTIONS.ADD_COLOR:
-			if (action.payload.color !== prevColors[0].color) {
+			if (
+				action.payload.color !== prevColors[0].color &&
+				!prevColors.filter((o) => o.color === action.payload.color)
+					.length > 0
+			) {
 				prevColors = prevColors.slice(0, 9)
 				return [newColor(action.payload.color), ...prevColors]
 			} else {
