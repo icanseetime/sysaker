@@ -1,6 +1,31 @@
 .SizeSelector {
     grid-area: SizeSelector;
-    display: flex;
-    justify-content: space-evenly;
     margin-top: 5px;
+}
+
+.SizeSelector form {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+/* TODO: move to separate button component later */
+.SizeSelector button {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid #FFFFFF;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-weight: 300;
+    text-align: center;
+    transition: all 0.2s;
+    background-color: transparent;
+    cursor: pointer;
+    opacity: .5;
+}
+
+.SizeSelector button:hover {
+    opacity: 1;
 }

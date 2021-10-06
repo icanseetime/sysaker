@@ -14,7 +14,8 @@ export const ACTIONS = {
 	TOGGLE_PEARL: 'toggle-pearl',
 	UPDATE_PEARL_COLOR: 'update-pearl-color',
 	CLEAR_CELL: 'clear-cell',
-	CLEAR_PATTERN: 'clear-pattern'
+	CLEAR_PATTERN: 'clear-pattern',
+	CHANGE_GRID_SIZE: 'change-grid-size'
 }
 
 const reducer = (fullPattern, action) => {
@@ -61,6 +62,20 @@ const reducer = (fullPattern, action) => {
 					pearlColor: ''
 				}
 			})
+		case ACTIONS.CHANGE_GRID_SIZE:
+			return Array(action.payload.columns * action.payload.rows)
+				.fill()
+				.map((item, idx) => {
+					if (item === undefined) {
+						return {
+							id: idx,
+							color: 'transparent',
+							pearl: false,
+							pearlColor: ''
+						}
+					}
+					return item
+				})
 		default:
 			throw new Error()
 	}
@@ -68,8 +83,8 @@ const reducer = (fullPattern, action) => {
 
 export default function Editor() {
 	const [gridSize, setGridSize] = useState({
-		columns: 10,
-		rows: 10
+		columns: 20,
+		rows: 20
 	})
 	const [pattern, dispatch] = useReducer(
 		reducer,
@@ -99,9 +114,23 @@ export default function Editor() {
 		}
 	}
 
-	const handleGridSizeChange = (type, newValue) => {
-		setGridSize((prev) => {
-			return { ...prev, [type]: newValue }
+	// const handleGridSizeChange = (type, newValue) => {
+	// 	setGridSize((prev) => {
+	// 		return { ...prev, [type]: newValue }
+	// 	})
+	// }
+
+	const handleGridSizeChange = ({ columns, rows }) => {
+		setGridSize({
+			columns,
+			rows
+		})
+		dispatch({
+			type: ACTIONS.CHANGE_GRID_SIZE,
+			payload: {
+				columns,
+				rows
+			}
 		})
 	}
 

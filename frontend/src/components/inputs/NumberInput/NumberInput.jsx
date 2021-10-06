@@ -26,7 +26,7 @@ export default function NumberInput({
 			<input
 				type="number"
 				name={name}
-				onChange={(e) => onChange(name, e.target.value)}
+				onChange={onChange}
 				value={value}
 				min={min || 0}
 				max={max}
