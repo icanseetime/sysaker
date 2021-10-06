@@ -92,9 +92,14 @@ export default function SideControls({ mode, changeMode, dispatch }) {
 					/>
 				}
 				onClick={() => {
-					dispatch({
-						type: ACTIONS.CLEAR_PATTERN
-					})
+					const confirmation = window.confirm(
+						'Advarsel! Hvis du trykker "OK" vil mønsteret bli visket ut. Er du sikker på at du vil gjøre dette?'
+					)
+					if (confirmation) {
+						dispatch({
+							type: ACTIONS.CLEAR_PATTERN
+						})
+					}
 				}}
 			/>
 
