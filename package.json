@@ -11,7 +11,7 @@
     "frontend-test": "cd frontend && yarn test --watchAll --coverage",
     "full-install": "yarn install && cd backend && yarn install && cd ../frontend && yarn",
     "build": "cd frontend && npm run build",
-    "heroku-install": "cd ../frontend && npm install",
+    "heroku-install": "cd frontend && npm install",
     "heroku-postbuild": "npm run heroku-install && npm run build"
   }
 }
